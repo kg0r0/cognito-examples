@@ -33,10 +33,12 @@ app.get('/*', async (req, res) => {
     });
     if (req.session.isRedirected) {
         const state = req.session.state;
+        const nonce = req.session.nonce;
         const codeVerifier = req.session.codeVerifier;
         const params = client.callbackParams(req);
         const tokenSet = await client.callback(config.redirect_uri, params, {
             state,
+            nonce,
             code_verifier: codeVerifier
         });
         req.session.tokenSet = tokenSet;
@@ -45,12 +47,14 @@ app.get('/*', async (req, res) => {
     }
     const state = openid_client_1.generators.state();
     req.session.state = state;
+    const nonce = openid_client_1.generators.nonce();
     const codeVerifier = openid_client_1.generators.codeVerifier();
     const codeChallenge = openid_client_1.generators.codeChallenge(codeVerifier);
     req.session.codeVerifier = codeVerifier;
     const url = client.authorizationUrl({
         scope: 'openid',
         state,
+        nonce,
         code_challenge: codeChallenge,
         code_challenge_method: 'S256',
     });

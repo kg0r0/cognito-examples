@@ -51,6 +51,7 @@ app.get('/*', async (req: express.Request, res: express.Response) => {
   })
   if (req.session.isRedirected) {
     const state = req.session.state;
+    const nonce = req.session.nonce;
     const codeVerifier = req.session.codeVerifier;
     const params = client.callbackParams(req);
     const tokenSet = await client.callback(
@@ -58,6 +59,7 @@ app.get('/*', async (req: express.Request, res: express.Response) => {
       params,
       {
         state,
+        nonce,
         code_verifier: codeVerifier
       });
     req.session.tokenSet = tokenSet;
@@ -66,6 +68,7 @@ app.get('/*', async (req: express.Request, res: express.Response) => {
   }
   const state = generators.state();
   req.session.state = state;
+  const nonce = generators.nonce();
 
   const codeVerifier = generators.codeVerifier();
   const codeChallenge = generators.codeChallenge(codeVerifier);
@@ -74,6 +77,7 @@ app.get('/*', async (req: express.Request, res: express.Response) => {
   const url = client.authorizationUrl({
     scope: 'openid',
     state,
+    nonce,
     code_challenge: codeChallenge,
     code_challenge_method: 'S256',
   })
