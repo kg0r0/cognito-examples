@@ -69,6 +69,7 @@ app.get('/*', async (req: express.Request, res: express.Response) => {
   const state = generators.state();
   req.session.state = state;
   const nonce = generators.nonce();
+  req.session.nonce = nonce;
 
   const codeVerifier = generators.codeVerifier();
   const codeChallenge = generators.codeChallenge(codeVerifier);
