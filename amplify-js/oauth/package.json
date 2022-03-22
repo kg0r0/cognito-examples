@@ -1,5 +1,5 @@
 {
-  "name": "oauth-flow-app",
+  "name": "oauth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
