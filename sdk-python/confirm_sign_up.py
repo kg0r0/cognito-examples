@@ -1,7 +1,7 @@
 import os
 import boto3
 import json
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 load_dotenv(dotenv_path)
