@@ -1,4 +1,6 @@
+from multiprocessing.connection import Client
 import os
+from tokenize import Token
 import boto3
 from getpass import getpass
 from dotenv import load_dotenv
@@ -31,9 +33,9 @@ assert client.initiate_auth(
 )["ResponseMetadata"]["HTTPStatusCode"] == 200
 print("[*] Successful Refresh Token verification")
 
-result = client.admin_user_global_sign_out(
-    UserPoolId=USER_POOL_ID,
-    Username=username
+result = client.revoke_token(
+    Token=refresh_token,
+    ClientId=CLIENT_ID,
 )
 assert result["ResponseMetadata"]["HTTPStatusCode"] == 200 
 print("[*] Successful revoke of Refresh Token")
