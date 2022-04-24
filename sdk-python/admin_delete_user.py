@@ -8,7 +8,7 @@ load_dotenv(dotenv_path)
 
 client = boto3.client("cognito-idp", region_name=os.getenv("REGION_NAME"))
 
-username = input("[*] Enter Your Email Address: ")
+username = input("[*] Enter Your Username: ")
 response = client.admin_delete_user(
     UserPoolId=os.getenv("USER_POOL_ID"),
     Username=username
