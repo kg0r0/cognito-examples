@@ -1,9 +1,10 @@
 const AWS = require('aws-sdk');
-const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: '<REGION>' });
+require('dotenv').config();
+const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: process.env.REGION_NAME });
 
 (async () => {
   const params = {
-    UserPoolId: '<YOUR-USER-POOL-ID>',
+    UserPoolId: process.env.USER_POOL_ID,
     Limit: 60,
     Filter: 'cognito:user_status="CONFIRMED"'
   }

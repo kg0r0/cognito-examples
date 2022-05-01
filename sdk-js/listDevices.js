@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
-const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: '<region>' });
+require('dotenv').config();
+const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: process.env.REGION_NAME });
 const params = {
   AccessToken: 'STRING_VALUE', /* required */
   Limit: 60,

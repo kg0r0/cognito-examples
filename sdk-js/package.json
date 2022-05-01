@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.1094.0"
+    "aws-sdk": "^2.1094.0",
+    "dotenv": "^16.0.0"
   }
 }

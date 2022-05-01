@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
-const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: '<region>' });
+require('dotenv').config();
+const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: process.env.REGION_NAME });
 
 (async () => {
   console.log(await cognitoidp.adminLinkProviderForUser({
@@ -12,7 +13,7 @@ const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: '<region>' }
       ProviderAttributeValue: '<id, sub, or user_id value found in the social identity provider token>',
       ProviderName: 'Google',
     },
-    UserPoolId: '<poolid>',
+    UserPoolId: process.env.USER_POOL_ID,
   }).promise());
 
   console.log(await cognitoidp.adminDisableProviderForUser({
@@ -21,6 +22,6 @@ const cognitoidp = new AWS.CognitoIdentityServiceProvider({ region: '<region>' }
       ProviderAttributeValue: '<id, sub, or user_id value found in the social identity provider token>',
       ProviderName: 'Google',
     },
-    UserPoolId: '<poolid>',
+    UserPoolId: process.env.USER_POOL_ID,
   }).promise());
 })().catch(err => console.log(err));
