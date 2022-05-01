@@ -10,7 +10,7 @@ username = input("[*] Enter Your Email Address: ")
 password = getpass("[*] Enter Your Password: ")
 
 response = client.initiate_auth(
-    ClientId=os.getenv("COGNITO_CLIENT_ID"),
+    ClientId=os.getenv("CLIENT_ID"),
     AuthFlow="USER_PASSWORD_AUTH",
     AuthParameters={"USERNAME": username, "PASSWORD": password},
 )
