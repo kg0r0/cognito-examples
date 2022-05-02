@@ -14,7 +14,7 @@ export class LambdaStack extends cdk.Stack {
     });
 
     const servicePrincipal = new iam.ServicePrincipal('cognito-idp.amazonaws.com');
-    const sourceArn = '<your Lambda function ARN>';
+    const sourceArn = '<your user pool ARN';
     const sourceAccount = '<your account number>';
     const servicePrincipalWithConditions = servicePrincipal.withConditions({
       ArnLike: {
