@@ -1,0 +1,15 @@
+{
+  "name": "amazon-cognito-identity",
+  "version": "1.0.0",
+  "description": "## References - https://www.npmjs.com/package/amazon-cognito-identity-js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "amazon-cognito-identity-js": "^5.2.9",
+    "aws-sdk": "^2.1143.0"
+  }
+}
