@@ -26,10 +26,10 @@ const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
     Username: username,
     Pool: userPool,
   };
-  var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+  const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function (result) {
-      var accessToken = result.getAccessToken().getJwtToken();
+      const accessToken = result.getAccessToken().getJwtToken();
 
       //POTENTIAL: Region needs to be set if not already set previously elsewhere.
       AWS.config.region = region;
