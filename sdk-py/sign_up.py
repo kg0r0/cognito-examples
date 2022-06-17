@@ -10,7 +10,7 @@ username = input("[*] Enter Your Email Address: ")
 password = getpass("[*] Enter Your Password: ")
 
 response = client.sign_up(
-    ClientId=os.getenv("COGNITO_CLIENT_ID"),
+    ClientId=os.getenv("CLIENT_ID"),
     Username=username,
     Password=password,
     UserAttributes=[{"Name": "email", "Value": username}],
