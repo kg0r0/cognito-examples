@@ -15,13 +15,13 @@ func main() {
 		log.Fatalf("unable to load SDK config, %v", err)
 	}
 
-	var ClientId = "<clientid>"
+	var clientid = "<clientid>"
 
 	svc := cognitoidentityprovider.NewFromConfig(cfg)
 	resp, err := svc.InitiateAuth(context.TODO(), &cognitoidentityprovider.InitiateAuthInput{
 		AuthFlow:       types.AuthFlowTypeUserPasswordAuth,
 		AuthParameters: map[string]string{"USERNAME": "<username>", "PASSWORD": "<password>"},
-		ClientId:       &ClientId,
+		ClientId:       &clientid,
 	})
 	if err != nil {
 		log.Fatalf("%+v\n", err)
